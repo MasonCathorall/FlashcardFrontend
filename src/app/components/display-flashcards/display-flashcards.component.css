@@ -1,0 +1,26 @@
+.cards {
+    /* flex: 75%;  */
+    display: flex;
+    /* background: lightgray; */
+    /* border: black;
+    outline: black; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* width: 50%;  */
+    /* height: 1000px;  */
+    /* padding: 16px; */
+}
+
+.edit-buttons {
+    margin-left: 16px;
+    float: right;
+}
+
+.toggle {
+    margin-right: 16px;
+}
+
+.table {
+    width: 100%;
+    background: white;
+}

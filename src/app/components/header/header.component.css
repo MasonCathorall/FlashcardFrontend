@@ -1,0 +1,17 @@
+.title {
+    font-weight: bold;
+    align-items: center;
+    display: flex; 
+    justify-content: center;
+    font-size: 40px;
+    padding: 50px;
+}
+
+.edit-buttons {
+    margin-left: 16px;
+    float: right;
+}
+
+.toggle {
+    margin-right: 16px;
+}

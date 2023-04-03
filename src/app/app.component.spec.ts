@@ -20,10 +20,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'FlashcardFront'`, () => {
+  it(`should have as title 'FlashcardFrontend'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('FlashcardFront');
+    expect(app.title).toEqual('FlashcardFrontend');
   });
 
   it('should render title', () => {

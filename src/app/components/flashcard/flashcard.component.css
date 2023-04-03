@@ -1,0 +1,23 @@
+.card {
+    flex: 50%;
+    display: flex;
+    background: white;
+    border: black;
+    outline: black;
+    /* justify-content: center; */
+    align-items: center;
+    /* padding: 16px; */
+    /* margin-bottom: 16px;
+    margin-top: 16px; */
+}
+
+.button {
+    justify-content: space-between; 
+    flex-wrap: wrap; 
+    display: flex; 
+    /* justify-content: center;  */
+    /* width: 120px;  */
+    margin: 8px 8px 8px 0; 
+    /* background-color: blue; */
+    color: white; 
+} 

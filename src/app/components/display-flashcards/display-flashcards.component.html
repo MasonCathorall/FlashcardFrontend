@@ -1,0 +1,36 @@
+<div class="edit-buttons">
+    <button mat-raised-button class="toggle" (click)="toggleTable()">Card/Table Toggle</button>
+    <button mat-raised-button class="new" (click)="openDialog()">Add New Card</button>
+</div>
+<div *ngIf="!showTable">
+    <div class="cards" *ngFor="let card of allFlashcards">
+        <app-flashcard class="cardItem" [flashcardInfo]="card"></app-flashcard>
+    </div>
+</div>
+
+<div *ngIf="showTable">
+    <div class="table">
+        <table mat-table [dataSource]="allFlashcards" class="mat-elevation-z8">
+            <ng-container matColumnDef="question">
+                <th mat-header-cell *matHeaderCellDef>Question</th>
+                <td mat-cell *matCellDef="let element"> {{element.question}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="answer">
+                <th mat-header-cell *matHeaderCellDef>Answer</th>
+                <td mat-cell *matCellDef="let element"> {{element.answer}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="options">
+                <th mat-header-cell *matHeaderCellDef>Options</th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-icon (click)="openEditDialog()">edit</mat-icon>
+                    <mat-icon (click)="openDeleteDialog()">delete</mat-icon>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</div>

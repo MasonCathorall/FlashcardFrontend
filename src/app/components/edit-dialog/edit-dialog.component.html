@@ -1,0 +1,26 @@
+<div class="dialog">
+    <h2 mat-dialog-title>Edit Flashcard</h2>
+    <mat-dialog-content [formGroup]="form">
+    
+        <mat-form-field hintLabel="Max 256 characters" appearance="fill">
+            <mat-label>Card Question</mat-label>
+            <textarea matInput #input maxlength="256" formControlName="question" placeholder={{cardInfo.question}}></textarea>
+            <mat-hint align="end">{{input.value.length}}/256</mat-hint>
+        </mat-form-field>
+
+        <br />
+
+        <mat-form-field hintLabel="Max 256 characters" appearance="fill">
+            <mat-label>Card Answer</mat-label>
+            <textarea matInput #input2 maxlength="256" formControlName="answer" placeholder={{cardInfo.question}}></textarea>
+            <mat-hint align="end">{{input2.value.length}}/256</mat-hint>
+        </mat-form-field>
+        <p *ngIf="showErr">Both entries must not be empty</p><p *ngIf="showErr"> or more than 256 characters</p>
+    
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+        <button mat-raised-button class="mat-raised-button"(click)="close()">Close</button>
+        <button mat-raised-button color="primary" class="mat-raised-button " (click)="update()">Update</button>
+    </mat-dialog-actions>
+</div>
