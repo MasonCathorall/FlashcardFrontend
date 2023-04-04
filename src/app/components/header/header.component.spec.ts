@@ -20,4 +20,10 @@ describe('HeaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have <h1> with "Flash Cards"', () => {
+    const bannerElement: HTMLElement = fixture.nativeElement;
+    const h1 = bannerElement.querySelector('h1')!;
+    expect(h1.textContent).toEqual('Flash Cards');
+  });
 });

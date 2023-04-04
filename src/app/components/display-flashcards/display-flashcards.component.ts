@@ -18,27 +18,28 @@ export class DisplayFlashcardsComponent implements OnInit{
   displayedColumns: string[] = ['question', 'answer', 'options'];
 
   constructor(private dialog: MatDialog,private router: Router, private flashcardService: FlashcardService) { 
-    this.flashcardService.getFlashcards().subscribe(
-      (resp) => {
-        resp.forEach(ele => {
-          // const c = {
-          //   id: Guid.raw(),
-          //   question: ele.question,
-          //   answer: ele.answer
-          // }
-          let card = new Flashcard(ele.id, ele.question, ele.answer);
-          this.allFlashcards.push(card);
-          console.log(ele);
-        });
-        console.log(this.allFlashcards);
-      }, 
-      (err) => console.log(err),
-      () => console.log("Flashcards Retrieved")
-    )
+    // this.flashcardService.getFlashcards().subscribe(
+    //   (resp) => {
+    //     resp.forEach(ele => {
+    //       let card = new Flashcard(ele.id, ele.question, ele.answer);
+    //       this.allFlashcards.push(card);
+    //       console.log(ele);
+    //     });
+    //     console.log(this.allFlashcards);
+    //   }, 
+    //   (err) => console.log(err),
+    //   () => console.log("Flashcards Retrieved")
+    // )
   }
 
   ngOnInit(): void{
-
+    this.flashcardService.getFlashcards().subscribe(
+      (resp) => {
+        this.allFlashcards = resp;
+        console.log(this.allFlashcards);
+      }, 
+      (err) => console.log(err)
+    )
   }
 
   openDialog() {
@@ -48,39 +49,102 @@ export class DisplayFlashcardsComponent implements OnInit{
     dialogConfig.autoFocus = true;
 
     dialogConfig.data = {
-      id: 1,
-      title: 'Create New Flashcard'
+      id: '',
+      question: '',
+      answer: ''
     };
 
-    this.dialog.open(CardDialogComponent, dialogConfig);
+    const dialogRef = this.dialog.open(CardDialogComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(
+      data => {
+        console.log("Create Dialog output:", data);
+        // this.allFlashcards.push(data);
+        this.allFlashcards = [];
+        this.flashcardService.getFlashcards().subscribe(
+          (resp) => {
+            this.allFlashcards = resp;
+            console.log(this.allFlashcards);
+          }, 
+          (err) => console.log(err)
+        )
+      }
+    );
   }
 
-  openDeleteDialog() {
+  openDeleteDialog(card: Flashcard) {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
 
     dialogConfig.data = {
-      id: 1,
-      title: 'Delete Flashcard'
+      id: card.id,
+      question: card.question,
+      answer: card.answer
     };
 
-    this.dialog.open(DeleteDialogComponent, dialogConfig);
+    const dialogRef = this.dialog.open(DeleteDialogComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(
+      data => {
+        console.log("Delete Dialog output:", data);
+        // const indexOfObject = this.allFlashcards.findIndex((object) => {
+        //   return object.id === data.id;
+        // });
+        // this.allFlashcards.splice(indexOfObject, 1);
+
+        this.allFlashcards = [];
+        this.flashcardService.getFlashcards().subscribe(
+          (resp) => {
+            this.allFlashcards = resp;
+            console.log(this.allFlashcards);
+          }, 
+          (err) => console.log(err)
+        )
+
+        
+      }
+    );
   }
 
-  openEditDialog() {
+  openEditDialog(card: Flashcard) {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
 
     dialogConfig.data = {
-      id: 1,
-      title: 'Edit Flashcard'
+      id: card.id,
+      question: card.question,
+      answer: card.answer
     };
 
-    this.dialog.open(EditDialogComponent, dialogConfig);
+    console.log(card);
+
+    const dialogRef = this.dialog.open(EditDialogComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(
+      data => {
+        console.log("Edit Dialog output:", data);
+
+        this.allFlashcards = [];
+        this.flashcardService.getFlashcards().subscribe(
+          (resp) => {
+            this.allFlashcards = resp;
+            console.log(this.allFlashcards);
+          }, 
+          (err) => console.log(err)
+        )
+
+
+        // const indexOfObject = this.allFlashcards.findIndex((object) => {
+        //   return object.id === data.id;
+        // });
+
+        // this.allFlashcards[indexOfObject].answer = data.answer;
+        // this.allFlashcards[indexOfObject].question = data.question;
+      }
+    );
   }
 
   toggleTable(){

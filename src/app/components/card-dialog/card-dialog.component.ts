@@ -49,15 +49,15 @@ export class CardDialogComponent implements OnInit {
         this.showErr = false;
 
         //create the card here
-        const card = new Flashcard( this.id.toString(), this.question, this.answer);
+        let card = new Flashcard( this.id.toString(), this.question, this.answer);
 
         console.log(card); 
 
         this.flashcardService.postFlashcard(card).subscribe(data => {
           console.log(data);
         });
-
-        this.dialogRef.close();
+        
+        this.dialogRef.close(card);
     }
   }
 

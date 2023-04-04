@@ -1,26 +1,25 @@
 <div class="dialog">
     <h2 mat-dialog-title>Edit Flashcard</h2>
-    <mat-dialog-content [formGroup]="form">
-    
-        <mat-form-field hintLabel="Max 256 characters" appearance="fill">
-            <mat-label>Card Question</mat-label>
-            <textarea matInput #input maxlength="256" formControlName="question" placeholder={{cardInfo.question}}></textarea>
-            <mat-hint align="end">{{input.value.length}}/256</mat-hint>
-        </mat-form-field>
+    <div mat-dialog-content ngDefaultControl [formGroup]="form" class="inputs">
+        <div mat-form-field hintLabel="Max 256 characters" appearance="fill">
+            <div mat-label>Card Question</div>
+            <textarea matInput #input maxlength="256" formControlName="question" placeholder={{c.question}}></textarea>
+            <div mat-hint align="end">{{input.value.length}}/256</div>
+        </div>
 
         <br />
 
-        <mat-form-field hintLabel="Max 256 characters" appearance="fill">
-            <mat-label>Card Answer</mat-label>
-            <textarea matInput #input2 maxlength="256" formControlName="answer" placeholder={{cardInfo.question}}></textarea>
-            <mat-hint align="end">{{input2.value.length}}/256</mat-hint>
-        </mat-form-field>
+        <div mat-form-field hintLabel="Max 256 characters" appearance="fill">
+            <div mat-label>Card Answer</div>
+            <textarea matInput #input2 maxlength="256" formControlName="answer" placeholder={{c.answer}}></textarea>
+            <div mat-hint align="end">{{input2.value.length}}/256</div>
+        </div>
         <p *ngIf="showErr">Both entries must not be empty</p><p *ngIf="showErr"> or more than 256 characters</p>
     
-    </mat-dialog-content>
+    </div>
 
-    <mat-dialog-actions>
-        <button mat-raised-button class="mat-raised-button"(click)="close()">Close</button>
-        <button mat-raised-button color="primary" class="mat-raised-button " (click)="update()">Update</button>
-    </mat-dialog-actions>
+    <div mat-dialog-actions>
+        <button mat-raised-button class="close" (click)="close()">Close</button>
+        <button mat-raised-button color="primary" class="update" (click)="update()">Update</button>
+    </div>
 </div>

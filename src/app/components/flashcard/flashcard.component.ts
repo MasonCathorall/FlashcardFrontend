@@ -38,13 +38,4 @@ export class FlashcardComponent {
     }
   }
 
-  openDialog() {
-    const dialogConfig = new MatDialogConfig();
-
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-
-    this.dialog.open(CardDialogComponent, dialogConfig);
-  }
-
 }

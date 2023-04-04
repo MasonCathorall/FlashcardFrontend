@@ -19,7 +19,7 @@ export class FlashcardService{
     }
 
     //get a card by id
-    public getFlashcard(id: Guid): Observable<Flashcard> {
+    public getFlashcard(id: string): Observable<Flashcard> {
         return this.http.get<Flashcard>(this.url + '/' + id);
     }
 
@@ -40,7 +40,7 @@ export class FlashcardService{
     }
 
     //delete a card
-    public deleteFlashcard(id: Guid) {
+    public deleteFlashcard(id: string) {
         return this.http.delete(this.url + '/' + id);
     }
 
