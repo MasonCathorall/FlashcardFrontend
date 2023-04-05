@@ -5,10 +5,10 @@
 export const environment = {
   production: false,
   withCredentials: true,
-  baseUrl: "https://localhost:7252",
+  baseUrl: "https://flashcard-api-website.azurewebsites.net/",
   headers: {
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': 'https://localhost:4200',
+    'Access-Control-Allow-Origin': 'https://flashfrontend.azurewebsites.net',
   },
 };
 

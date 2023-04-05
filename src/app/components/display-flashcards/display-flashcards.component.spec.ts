@@ -78,7 +78,6 @@ describe('DisplayFlashcardsComponent', () => {
     const table = document.getElementsByClassName("table")
     expect(table).toBeTruthy();
   });
-  
 
   //test the edit dialog
   it('should open edit dialog', () => {
