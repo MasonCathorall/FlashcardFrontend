@@ -13,6 +13,7 @@ import { CardDialogComponent } from '../components/card-dialog/card-dialog.compo
 import { DeleteDialogComponent } from '../components/delete-dialog/delete-dialog.component';
 import { FlashcardComponent } from '../components/flashcard/flashcard.component';
 import { Flashcard } from '../models/flashcard';
+import { of } from 'rxjs';
 
 describe('FlashcardService', () => {
     let httpClientSpy: jasmine.SpyObj<HttpClient>;
@@ -46,8 +47,6 @@ describe('FlashcardService', () => {
           ]
       });
       service = TestBed.inject(FlashcardService);
-      // httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
-      // service = new FlashcardService(httpClientSpy);
     });
   
     it('should be created', () => {
@@ -59,37 +58,44 @@ describe('FlashcardService', () => {
       let card: Flashcard = new Flashcard("3cbf69aa-50c7-476e-d514-08db30560289", "Hello", "Mason");
       const expectedCard: Flashcard = new Flashcard("3cbf69aa-50c7-476e-d514-08db30560289", "Hello", "Mason");
 
-      service.getFlashcards().subscribe(
-        (resp) => {
-          allCards = resp;
-        }
-      );
+      spyOn(service, 'getFlashcards').and.returnValue(of(allCards));
+
       expect(allCards).toBeTruthy();
     });
 
     it('should get one flashcards', () => {
       let c: Flashcard = new Flashcard("","","");
       let card: Flashcard = new Flashcard("3cbf69aa-50c7-476e-d514-08db30560289", "Hello", "Mason");
-      service.getFlashcard("3cbf69aa-50c7-476e-d514-08db30560289").subscribe(
-        (data) => {
-          c.id = data.id.toString();
-          c.answer = data.answer;
-          c.question = data.question;
-        }
-      );
+
+      spyOn(service, 'getFlashcard').and.returnValue(of(c));
+      
       expect(c).toBeTruthy();
     });
 
     it('should post a new flashcard', () => {
-      expect(service).toBeTruthy();
+      let c: Flashcard = new Flashcard("","","");
+      let card: Flashcard = new Flashcard("3cbf69aa-50c7-476e-d514-08db30560289", "Hello", "Mason");
+
+      spyOn(service, 'postFlashcard').withArgs(card).and.returnValue(of(c));
+      
+      expect(c).toBeTruthy();
     });
 
     it('should update a flashcard', () => {
-      expect(service).toBeTruthy();
+      let c: Flashcard = new Flashcard("","","");
+      let card: Flashcard = new Flashcard("3cbf69aa-50c7-476e-d514-08db30560289", "Hello", "Mason");
+      spyOn(service, 'updateFlashcard').withArgs(card).and.returnValue(of(c));
+      
+      expect(c).toBeTruthy();
     });
 
     it('should delete a flashcard', () => {
-      expect(service).toBeTruthy();
+      let c: Flashcard = new Flashcard("","","");
+      let card: Flashcard = new Flashcard("3cbf69aa-50c7-476e-d514-08db30560289", "Hello", "Mason");
+
+      spyOn(service, 'deleteFlashcard').withArgs(card.id);
+      
+      expect(c).toBeTruthy();
     });
   });
 

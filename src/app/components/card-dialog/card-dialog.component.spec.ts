@@ -51,7 +51,20 @@ describe('CardDialogComponent', () => {
     fixture.detectChanges();
   });
 
+  it('should test ngOnInit', () => {
+    expect(component.ngOnInit()).toBeFalsy();
+  });
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should create card', () => {
+    expect(component.create()).toBeFalsy();
+  });
+
+  it('should close', () => {
+    expect(component.close()).toBeFalsy();
+  });
+  
 });

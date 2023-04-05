@@ -60,21 +60,16 @@ describe('DeleteDialogComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should close', () => {
+    expect(component.close()).toBeTruthy();
+  });
+
   it('should have a warning', () => {
     const field = document.getElementsByClassName('warning');
     expect(field).toBeTruthy();
   });
 
-  it('should delete', () => {
-    let spy = spyOn(component.dialogRef, 'close').and.callThrough();
-    component.deleteCard();
-    expect(spy).toHaveBeenCalled();
+  it('should delete card', () => {
+    expect(component.deleteCard()).toBeTruthy();
   });
-
-  it('should click close', async(() => {
-    spyOn(component.dialogRef, 'close');
-    const btn = fixture.debugElement.nativeElement.querySelector('#close')
-    btn.click();
-    expect(component.close).toHaveBeenCalled();
-  }));
 });

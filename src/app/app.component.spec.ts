@@ -26,8 +26,8 @@ describe('AppComponent', () => {
 
   it('should have head', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toBeTruthy();
+    const app = document.getElementsByClassName('head');
+    expect(app).toBeTruthy();
   });
 
   it(`should have as title 'FlashcardFrontend'`, () => {

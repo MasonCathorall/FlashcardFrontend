@@ -59,6 +59,10 @@ describe('EditDialogComponent', () => {
     expect(field).toBeTruthy();
   });
 
+  it('should test ngOnInit', () => {
+    expect(component.ngOnInit()).toBeFalsy();
+  });
+
   it('should have input fields', () => {
     const button = document.getElementsByClassName('inputs');
     expect(button).toBeTruthy();
@@ -72,5 +76,9 @@ describe('EditDialogComponent', () => {
   it('should update dialog', () => {
     const button = document.getElementsByClassName('update');
     expect(button).toBeTruthy();
+  });
+
+  it('should create card', () => {
+    expect(component.update()).toBeTruthy();
   });
 });

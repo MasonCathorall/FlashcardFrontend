@@ -33,13 +33,7 @@ export class DisplayFlashcardsComponent implements OnInit{
   }
 
   ngOnInit(): void{
-    this.flashcardService.getFlashcards().subscribe(
-      (resp) => {
-        this.allFlashcards = resp;
-        console.log(this.allFlashcards);
-      }, 
-      (err) => console.log(err)
-    )
+    this.getCards();
   }
 
   openDialog() {
@@ -153,6 +147,16 @@ export class DisplayFlashcardsComponent implements OnInit{
     } else {
       this.showTable = true;
     }
+  }
+
+  getCards(): void {
+    this.flashcardService.getFlashcards().subscribe(
+      (resp) => {
+        this.allFlashcards = resp;
+        console.log(this.allFlashcards);
+      }, 
+      (err) => console.log(err)
+    )
   }
 
 }

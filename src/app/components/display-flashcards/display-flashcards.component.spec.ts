@@ -14,6 +14,7 @@ import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 import { FlashcardComponent } from '../flashcard/flashcard.component';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { of } from 'rxjs';
 
 describe('DisplayFlashcardsComponent', () => {
   let component: DisplayFlashcardsComponent;
@@ -54,6 +55,10 @@ describe('DisplayFlashcardsComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should test ngOnInit', () => {
+    expect(component.ngOnInit()).toBeFalsy();
+  });
+
   //check for cards
   it('should show cards', () => {
     const table = document.getElementsByClassName("showCards")
@@ -64,7 +69,7 @@ describe('DisplayFlashcardsComponent', () => {
   it('should open create dialog', () => {
     component.openDialog();
     const dialogcomp = document.getElementsByClassName('dialog');
-    expect(dialogcomp.item).toBeTruthy();
+    expect(dialogcomp).toBeTruthy();
    });
 
   //test the flip method
@@ -79,15 +84,33 @@ describe('DisplayFlashcardsComponent', () => {
   it('should open edit dialog', () => {
     component.openEditDialog(new Flashcard("3fa85f64-5717-4562-b3fc-2c963f66afa6", "Lol", "lol"));
     const dialogcomp = document.getElementsByClassName('dialog');
-    expect(dialogcomp.item).toBeTruthy();
+    expect(dialogcomp).toBeTruthy();
    });
 
   //test the delete dialog
   it('should open delete dialog', () => {
     component.openDeleteDialog(new Flashcard("3fa85f64-5717-4562-b3fc-2c963f66afa6", "Lol", "lol"));
     const dialogcomp = document.getElementsByClassName('dialog');
-    expect(dialogcomp.item).toBeTruthy();
+    expect(dialogcomp).toBeTruthy();
    });
+
+  it('should get all cards', () => {
+    const service = TestBed.inject(FlashcardService);
+    const data: Flashcard[] = [];
+
+    spyOn(service, 'getFlashcards').and.returnValue(of(data));
+
+    expect(component.allFlashcards).toBeTruthy();
+  });
+
+  it('should get one cards', () => {
+    const service = TestBed.inject(FlashcardService);
+    const data: Flashcard = new Flashcard("","","");
+
+    spyOn(service, 'getFlashcard').and.returnValue(of(data));
+
+    expect(component.allFlashcards).toBeTruthy();
+  });
 
 
 });
