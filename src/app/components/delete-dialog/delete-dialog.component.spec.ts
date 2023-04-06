@@ -1,5 +1,4 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
-
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DeleteDialogComponent } from './delete-dialog.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
@@ -9,7 +8,6 @@ import { MatDialogModule, MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angu
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Flashcard } from 'src/app/models/flashcard';
 import { FlashcardService } from 'src/app/services/flashcard.service';
-import { DisplayFlashcardsComponent } from '../display-flashcards/display-flashcards.component';
 import { FlashcardComponent } from '../flashcard/flashcard.component';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';

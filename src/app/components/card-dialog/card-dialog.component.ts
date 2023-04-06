@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {MAT_FORM_FIELD, MatFormField, MatFormFieldControl} from '@angular/material/form-field';
 import { Guid } from 'guid-typescript';
 import { Flashcard } from 'src/app/models/flashcard';
 import { FlashcardService } from 'src/app/services/flashcard.service';

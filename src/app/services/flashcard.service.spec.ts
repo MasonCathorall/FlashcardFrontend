@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import { FlashcardService } from './flashcard.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
@@ -19,7 +18,6 @@ describe('FlashcardService', () => {
     let httpClientSpy: jasmine.SpyObj<HttpClient>;
     let service: FlashcardService;
     let controller: HttpTestingController;
-    const expectUrl = 'https://localhost:7252/api/Flashcard/3cbf69aa-50c7-476e-d514-08db30560289';
   
     beforeEach(() => {
       TestBed.configureTestingModule({
@@ -54,9 +52,7 @@ describe('FlashcardService', () => {
     });
 
     it('should get all flashcards', () => {
-      let allCards: Flashcard[] = []
-      let card: Flashcard = new Flashcard("3cbf69aa-50c7-476e-d514-08db30560289", "Hello", "Mason");
-      const expectedCard: Flashcard = new Flashcard("3cbf69aa-50c7-476e-d514-08db30560289", "Hello", "Mason");
+      let allCards: Flashcard[] = [];
 
       spyOn(service, 'getFlashcards').and.returnValue(of(allCards));
 
@@ -65,7 +61,6 @@ describe('FlashcardService', () => {
 
     it('should get one flashcards', () => {
       let c: Flashcard = new Flashcard("","","");
-      let card: Flashcard = new Flashcard("3cbf69aa-50c7-476e-d514-08db30560289", "Hello", "Mason");
 
       spyOn(service, 'getFlashcard').and.returnValue(of(c));
       

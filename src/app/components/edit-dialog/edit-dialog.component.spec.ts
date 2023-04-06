@@ -12,7 +12,7 @@ import { FlashcardComponent } from '../flashcard/flashcard.component';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditDialogComponent } from './edit-dialog.component';
-import { CardDialogComponent } from '../card-dialog/card-dialog.component';
+
 
 describe('EditDialogComponent', () => {
   let component: EditDialogComponent;

@@ -1,5 +1,4 @@
 import { Component, Inject, Input } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Flashcard } from 'src/app/models/flashcard';
 import { FlashcardService } from 'src/app/services/flashcard.service';
@@ -16,11 +15,7 @@ export class DeleteDialogComponent {
   constructor(private flashcardService: FlashcardService,
     public dialogRef: MatDialogRef<DeleteDialogComponent>, @Inject(MAT_DIALOG_DATA) data:Flashcard) {
       console.log(data);
-      // this.c = data;
       this.c = new Flashcard(data.id, data.question, data.answer);
-      // this.c.id = data.id;
-      // this.c.answer = data.answer;
-      // this.c.question = data.question;
   }
 
 

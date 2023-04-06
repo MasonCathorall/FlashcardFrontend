@@ -18,18 +18,6 @@ export class DisplayFlashcardsComponent implements OnInit{
   displayedColumns: string[] = ['question', 'answer', 'options'];
 
   constructor(private dialog: MatDialog,private router: Router, private flashcardService: FlashcardService) { 
-    // this.flashcardService.getFlashcards().subscribe(
-    //   (resp) => {
-    //     resp.forEach(ele => {
-    //       let card = new Flashcard(ele.id, ele.question, ele.answer);
-    //       this.allFlashcards.push(card);
-    //       console.log(ele);
-    //     });
-    //     console.log(this.allFlashcards);
-    //   }, 
-    //   (err) => console.log(err),
-    //   () => console.log("Flashcards Retrieved")
-    // )
   }
 
   ngOnInit(): void{
@@ -53,7 +41,6 @@ export class DisplayFlashcardsComponent implements OnInit{
     dialogRef.afterClosed().subscribe(
       data => {
         console.log("Create Dialog output:", data);
-        // this.allFlashcards.push(data);
         this.allFlashcards = [];
         this.flashcardService.getFlashcards().subscribe(
           (resp) => {
@@ -82,10 +69,6 @@ export class DisplayFlashcardsComponent implements OnInit{
     dialogRef.afterClosed().subscribe(
       data => {
         console.log("Delete Dialog output:", data);
-        // const indexOfObject = this.allFlashcards.findIndex((object) => {
-        //   return object.id === data.id;
-        // });
-        // this.allFlashcards.splice(indexOfObject, 1);
 
         this.allFlashcards = [];
         this.flashcardService.getFlashcards().subscribe(
@@ -129,14 +112,6 @@ export class DisplayFlashcardsComponent implements OnInit{
           }, 
           (err) => console.log(err)
         )
-
-
-        // const indexOfObject = this.allFlashcards.findIndex((object) => {
-        //   return object.id === data.id;
-        // });
-
-        // this.allFlashcards[indexOfObject].answer = data.answer;
-        // this.allFlashcards[indexOfObject].question = data.question;
       }
     );
   }

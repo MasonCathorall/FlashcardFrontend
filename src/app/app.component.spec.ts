@@ -25,7 +25,6 @@ describe('AppComponent', () => {
   });
 
   it('should have head', () => {
-    const fixture = TestBed.createComponent(AppComponent);
     const app = document.getElementsByClassName('head');
     expect(app).toBeTruthy();
   });
