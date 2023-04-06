@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   withCredentials: true,
-  baseUrl: "https://flashcard-api-website.azurewebsites.net/",
+  baseUrl: "https://flashcard-api-website.azurewebsites.net",
   headers: {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': 'https://flashfrontend.azurewebsites.net',

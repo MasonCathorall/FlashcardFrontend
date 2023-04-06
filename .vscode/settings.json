@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/bb2cb904-5b1c-4b07-bc7d-fa6a66024069/resourceGroups/DefaultResourceGroup-EUS/providers/Microsoft.Web/sites/flashfrontend",
+    "appService.deploySubpath": "."
+}
