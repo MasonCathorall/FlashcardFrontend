@@ -37,7 +37,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: node-app
-        path: .
+        path: release.zip
         #release.zip 
         #./dist/flashcard-front
 
