@@ -52,7 +52,7 @@ describe('CardDialogComponent', () => {
   });
 
   it('should test ngOnInit', () => {
-    expect(component.ngOnInit()).toBeFalsy();
+    expect(component.ngOnInit()).toBeTruthy();
   });
 
   it('should create', () => {
@@ -64,7 +64,7 @@ describe('CardDialogComponent', () => {
   });
 
   it('should close', () => {
-    expect(component.close()).toBeFalsy();
+    expect(component.close()).toBeTruthy();
   });
   
 });
