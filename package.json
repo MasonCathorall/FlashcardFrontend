@@ -21,7 +21,7 @@
     "@angular/platform-browser-dynamic": "^15.0.0",
     "@angular/router": "^15.0.0",
     "@babel/traverse": "^7.23.7",
-    "follow-redirects": "^1.15.5",
+    "follow-redirects": "^1.15.6",
     "guid-typescript": "^1.0.9",
     "ip": "^2.0.1",
     "npm": "^10.3.0",
@@ -30,6 +30,7 @@
     "semver": "^7.5.4",
     "socket.io-parser": "^4.2.4",
     "tslib": "^2.3.0",
+    "webpack-dev-middleware": "^6.1.2",
     "zone.js": "~0.12.0"
   },
   "devDependencies": {
